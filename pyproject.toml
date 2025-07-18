@@ -1,0 +1,74 @@
+# This file specifies the build system and project metadata for the Jingongo SDK.
+
+[build-system]
+# These are the build tools needed to create your package.
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# ===================================================================
+# NEW SECTION: Tells the build system where to find your code.
+# This is essential for the `src` layout.
+[tool.setuptools.packages.find]
+where = ["src"]
+# ===================================================================
+
+[project]
+# --- Core Metadata ---
+name = "jingongo-framework"
+version = "0.1.0" # Start with a pre-release version
+authors = [
+  { name="Valdimiro Cussei", email="valdimiro.cussei@ratotecki.com" },
+  { name="Bento Cussei", email="bento.cussei@ratotecki.com" }]
+
+description = "A Python SDK for the Jingongo Digital Twin Framework API."
+
+readme = "README.md"
+
+requires-python = ">=3.8"
+
+# common license.
+license = { text = "Apache-2.0" }
+
+keywords = ["fmu", "digital twin", "simulation", "jingongo", "fmi"]
+
+# --- Classifiers for PyPI ---
+# Helps users find your package. Full list: https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+# --- Dependencies ---
+# These are the libraries your SDK needs to run.
+# They will be automatically installed when a user runs `pip install jingongo-framework`.
+dependencies = [
+    "requests>=2.20.0",
+    "PyYAML>=5.0",      # Used for parsing .jingongo.yml configuration files
+    "tqdm>=4.60.0"      # Used for the download progress bar
+]
+
+# --- Optional Dependencies ---
+# These are not installed by default, but can be installed by specifying the group.
+# Example: pip install .[test]
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    # "pytest-mock",  # Another common testing library you might add later
+]
+
+# --- Project URLs ---
+# Provides helpful links on the PyPI project page.
+[project.urls]
+"Homepage" = "https://github.com/vcussei/jingongo"
+"Repository" = "https://github.com/vcussei/jingongo"
+"Bug Tracker" = "https://github.com/vcussei/jingongo/issues"

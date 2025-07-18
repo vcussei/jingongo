@@ -1,0 +1,14 @@
+# identity_block_model/.jingongo.yml
+model:
+  name: IdentityBlock
+  version: 0.0.1
+  description: A simple pass-through model that outputs its input.
+  component_type: signal_processing
+  fmi_type: CoSimulation # For simplest conversion, CoSimulation is usually easier
+  inputs:
+    - name: input_value
+      type: Real
+  outputs:
+    - name: output_value
+      type: Real
+  parameters: {} # This model has no parameters

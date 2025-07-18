@@ -1,0 +1,37 @@
+; CIdentityBlock/model.def
+; EXPORTS section lists functions to be exported from the DLL
+EXPORTS
+    fmi2GetTypesPlatform
+    fmi2GetVersion
+    fmi2SetDebugLogging
+    fmi2Instantiate
+    fmi2SetupExperiment
+    fmi2EnterInitializationMode
+    fmi2ExitInitializationMode
+    fmi2Terminate
+    fmi2Reset
+    fmi2FreeInstance
+    fmi2GetReal
+    fmi2SetReal
+    fmi2GetInteger
+    fmi2SetInteger
+    fmi2GetBoolean
+    fmi2SetBoolean
+    fmi2GetString
+    fmi2SetString
+    fmi2SetRealInputDerivatives
+    fmi2GetFMUstate
+    fmi2SetFMUstate
+    fmi2FreeFMUstate
+    fmi2SerializedFMUstateSize
+    fmi2SerializeFMUstate
+    fmi2DeSerializeFMUstate
+    fmi2GetDirectionalDerivative
+    fmi2GetRealOutputDerivatives
+    fmi2CancelStep
+    fmi2DoStep
+    fmi2GetStatus
+    fmi2GetRealStatus
+    fmi2GetIntegerStatus
+    fmi2GetBooleanStatus
+    fmi2GetStringStatus

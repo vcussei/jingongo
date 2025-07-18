@@ -1,0 +1,19 @@
+# c_identity_block_model/.jingongo.yml
+
+model:
+  name: CIdentityBlock
+  version: 0.0.1
+  description: A test identity block model implemented in C.
+  language: c  # <-- THIS LINE IS CRUCIAL
+  component_type: signal_processing
+  fmi_type: CoSimulation
+  inputs:
+    - name: input_value
+      type: Real
+  outputs:
+    - name: output_value
+      type: Real
+  parameters:
+    - name: test_param
+      type: Real
+      default: 20.0
