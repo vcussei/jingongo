@@ -263,7 +263,7 @@ class Jingongo:
         return self._make_request("GET", "/health")
     
     @staticmethod
-    def get_login_url(portal_url: str = "http://localhost:3000") -> str:
+    def get_login_url(portal_url: str = "http://www.jingongo.com") -> str:
         """
         Provides the URL to the web portal for users to sign in.
 
@@ -281,7 +281,7 @@ class Jingongo:
         
 
     @staticmethod
-    def get_signup_url(portal_url: str = "http://localhost:3000") -> str:
+    def get_signup_url(portal_url: str = "http://www.jingongo.com") -> str:
         """
         Provides the URL to the web portal for users to sign up.
 

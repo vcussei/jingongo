@@ -1,4 +1,4 @@
-# examples/05_get_login_url.py
+# examples/06_get_login_url.py
 import os
 import sys
 

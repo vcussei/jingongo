@@ -1,4 +1,4 @@
-# examples/06_get_signup_url.py
+# examples/07_get_signup_url.py
 import os
 import sys
 
