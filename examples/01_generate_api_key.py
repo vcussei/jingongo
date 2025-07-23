@@ -11,7 +11,7 @@ from jingongo import Jingongo
 
 # --- Configuration ---
 # Your backend API's public URL
-JINGONGO_API_BASE_URL = "https://jingongo-backend-api-723715926581.us-central1.run.app"
+JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL") 
 
 def main():
     """

@@ -13,7 +13,7 @@ from jingongo.jingongo import JingongoAuthError, JingongoAPIError # Import custo
 # --- Configuration ---
 # It's best practice to load sensitive data from environment variables
 # instead of hardcoding them in the script.
-JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL", "https://jingongo-backend-api-723715926581.us-central1.run.app")
+JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL")
 JINGONGO_API_KEY = os.environ.get("JINGONGO_API_KEY")
 
 def main():
@@ -69,3 +69,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
