@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../s
 from jingongo import Jingongo
 
 # --- Configuration ---
-JINGONGO_API_BASE_URL = "https://jingongo-backend-api-723715926581.us-central1.run.app"
+JINGONGO_API_BASE_URL = os.environ.get('JINGONGO_API_BASE_URL')
 
 def main():
     """
