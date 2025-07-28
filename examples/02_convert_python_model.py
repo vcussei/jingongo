@@ -44,6 +44,7 @@ def main():
         # Most parameters will be read from the model's .jingongo.yml file.
         py_job = client.convert_to_fmu(
             project_path=py_model_path,
+            model_name="YourCModelName",  # Replace with your model name
             language="python"
         )
         
