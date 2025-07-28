@@ -39,7 +39,7 @@ def main():
         
         c_job = client.convert_to_fmu(
             project_path=c_model_path,
-            model_name="Panguila model of growth",
+            model_name="YourCModelName",  # Replace with your model name
             language="c"
         )
         
