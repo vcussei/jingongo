@@ -11,6 +11,7 @@ from jingongo import Jingongo
 
 # --- Configuration ---
 JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL")
+MODEL_NAME = "your_model_name"  # Replace with your desired model name
 
 def main():
     """
@@ -44,7 +45,7 @@ def main():
         # Most parameters will be read from the model's .jingongo.yml file.
         py_job = client.convert_to_fmu(
             project_path=py_model_path,
-            model_name="YourCModelName",  # Replace with your model name
+            model_name=MODEL_NAME,  # Replace with your model name
             language="python"
         )
         

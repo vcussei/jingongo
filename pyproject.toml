@@ -15,7 +15,7 @@ where = ["src"]
 [project]
 # --- Core Metadata ---
 name = "jingongo-framework"
-version = "0.1.2" # Start with a pre-release version
+version = "0.1.3" # Start with a pre-release version
 authors = [
   { name="Valdimiro Cussei", email="valdimiro.cussei@ratotecki.com" },
   { name="Bento Cussei", email="bento.cussei@ratotecki.com" }]

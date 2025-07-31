@@ -191,12 +191,31 @@ class Jingongo:
                 yaml_data = yaml.safe_load(f).get('model', {})
             config.update(yaml_data)
 
+        input_variables = {
+            v["name"]: v.get("type", "Real")
+            for v in config.get("inputs", [])
+        }
+        output_variables = {
+            v["name"]: v.get("type", "Real")
+            for v in config.get("outputs", [])
+        }
+        parameters = {
+            p["name"]: p.get("default", 0.0)
+            for p in config.get("parameters", [])
+        }
+
+        # Build the final payload for the API
         payload = {
             "model_name": config.get("model_name", "UntitledModel"),
             "version": config.get("version", "1.0.0"),
             "description": config.get("description", ""),
             "language": config.get("language", "python"),
-            # Add other relevant fields from your ConversionRequest model
+            "component_type": config.get("component_type", "unknown"),
+            "fmi_type": config.get("fmi_type", "CoSimulation"),
+            # Add the correctly formatted variables
+            "input_variables": input_variables,
+            "output_variables": output_variables,
+            "parameters": parameters
         }
         _logger.info(f"Final configuration for conversion: Language = '{payload['language']}', Model = '{payload['model_name']}'")
 
