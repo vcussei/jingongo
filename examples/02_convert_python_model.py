@@ -4,15 +4,19 @@ import sys
 import json
 import logging
 from pathlib import Path
+import random
+import string
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+def generate_random_name(length=8):
+    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
 from jingongo import Jingongo
 
 # --- Configuration ---
 JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL")
-MODEL_NAME = "your_model_name"  # Replace with your desired model name
-
+MODEL_NAME = os.environ.get('MODEL_NAME', 'your-model-name')   # Replace with your desired model name
+MODEL_NAME = MODEL_NAME + f"_{generate_random_name()}"
 def main():
     """
     Demonstrates converting a local Python-based model into an FMU.
