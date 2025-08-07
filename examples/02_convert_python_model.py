@@ -16,7 +16,7 @@ from jingongo import Jingongo
 # --- Configuration ---
 JINGONGO_API_BASE_URL = os.environ.get("JINGONGO_API_BASE_URL")
 MODEL_NAME = os.environ.get('MODEL_NAME', 'your-model-name')   # Replace with your desired model name
-MODEL_NAME = MODEL_NAME + f"_{generate_random_name()}"
+MODEL_NAME = MODEL_NAME + f"_{generate_random_name()}" 
 def main():
     """
     Demonstrates converting a local Python-based model into an FMU.
