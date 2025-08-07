@@ -1,61 +1,40 @@
-# identity_block_model/model.py
+from pythonfmu.fmi2slave import Fmi2Slave
+from pythonfmu.variables import Real
+from pythonfmu.enums import Fmi2Causality, Fmi2Variability
 
-def initialize(params):
-    """
-    Initializes the Identity Block model.
-    This model has no internal state or specific parameters to initialize.
-    """
-    print("Identity Block: Initializing...")
-    # Return an empty dictionary for state as this model is stateless
-    return {"state": {}}
+class IdentityModel(Fmi2Slave):
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
-def do_step(current_time, inputs, state):
-    """
-    Performs one simulation step for the Identity Block.
-    It simply passes the 'input_value' directly to 'output_value'.
+        # Initialize and register variables
+        self.input_value = 0.0
+        self.register_variable(Real(
+            "input_value", 
+            causality=Fmi2Causality.input,
+            variability=Fmi2Variability.continuous,
+            getter=lambda: self.input_value,
+            setter=lambda v: setattr(self, "input_value", v)
+        ))
+        
+        self.output_value = 0.0
+        self.register_variable(Real(
+            "output_value",
+            causality=Fmi2Causality.output,
+            variability=Fmi2Variability.continuous,
+            getter=lambda: self.output_value
+        ))
+        
+        self.test_param = 20.0
+        self.register_variable(Real(
+            "test_param",
+            causality=Fmi2Causality.parameter,
+            variability=Fmi2Variability.fixed,
+            getter=lambda: self.test_param,
+            setter=lambda v: setattr(self, "test_param", v),
+            start=20.0
+        ))
 
-    Args:
-        current_time (float): The current simulation time.
-        inputs (dict): Dictionary of input variables. Expected: {"input_value": float}.
-        state (dict): The current internal state of the model (empty for this model).
-
-    Returns:
-        dict: A dictionary containing:
-            - "outputs" (dict): Dictionary of output variables.
-            - "new_state" (dict): The updated internal state.
-    """
-    input_val = inputs.get("input_value", 0.0) # Get input, default to 0.0 if not provided
-    
-    output_val = input_val # The core logic: output is simply the input
-    
-    print(f"Identity Block at time {current_time:.2f}: Input = {input_val:.2f}, Output = {output_val:.2f}")
-    
-    # This model is stateless, so new_state is the same as current state
-    new_state = state 
-    
-    return {"outputs": {"output_value": output_val}, "new_state": new_state}
-
-def terminate(state):
-    """
-    Terminates the Identity Block model.
-    No specific cleanup needed for this simple model.
-    """
-    print("Identity Block: Terminating...")
-    return True # Indicate successful termination
-
-
-if __name__ == "__main__":
-    # Example usage of the Identity Block model
-    params = {}
-    state = initialize(params)
-    
-    # Simulate a step with an example input
-    current_time = 0.0
-    inputs = {"input_value": 5.0}
-    
-    result = do_step(current_time, inputs, state)
-    
-    print("Outputs:", result["outputs"])
-    
-    # Terminate the model
-    terminate(state)
+    def do_step(self, current_time, step_size):
+        self.output_value = self.input_value * self.test_param
+        return True
